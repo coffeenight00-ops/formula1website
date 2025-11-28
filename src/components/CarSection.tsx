@@ -1,12 +1,12 @@
+import React from "react";
 import { Wind, Settings } from "lucide-react";
 
-// Import your images
 import car1 from "../assets/images/car/PIECE1.png";
-import car2 from "../assets/images/car/PIECE3.png";
+import car2 from "../assets/images/car/PIECE3.jpeg";  // FIXED EXTENSION
 import car3 from "../assets/images/car/PIECE12.png";
-import car4 from "../assets/images/car/PIECE13.png";
-import car5 from "../assets/images/car/PIECE15.png";
-import car6 from "../assets/images/car/18.png";
+import car4 from "../assets/images/car/PIECE13.jpeg"; // FIXED EXTENSION
+import car5 from "../assets/images/car/PIECE15.jpeg"; // FIXED EXTENSION
+import car6 from "../assets/images/car/18.jpeg";      // FIXED EXTENSION
 
 export default function CarSection() {
   const specs = [
@@ -14,7 +14,6 @@ export default function CarSection() {
     { icon: Settings, label: "Weight", value: "50 g" },
   ];
 
-  // Array of images for gallery display
   const carImages = [car1, car2, car3, car4, car5, car6];
 
   return (
@@ -53,12 +52,12 @@ export default function CarSection() {
           {carImages.map((img, index) => (
             <div
               key={index}
-              className="rounded-xl overflow-hidden border border-yellow-400/20 shadow-lg hover:scale-105 transition-transform"
+              className="rounded-xl overflow-hidden border border-yellow-400/20 shadow-lg hover:scale-105 transition-transform bg-black"
             >
               <img
                 src={img}
                 alt={`Car ${index + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-48 object-contain bg-black"
               />
             </div>
           ))}

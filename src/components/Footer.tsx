@@ -34,6 +34,7 @@ export default function Footer() {
           <h3 className="text-white font-semibold text-lg mb-4">Connect With Us</h3>
 
           <div className="flex space-x-4 mb-4">
+            {/* Email */}
             <a
               href="mailto:aalshweiki@stud.jubilee.edu.jo"
               className="w-10 h-10 bg-[#1a1d21] rounded-full flex items-center justify-center hover:bg-yellow-600 transition"
@@ -41,8 +42,9 @@ export default function Footer() {
               <Mail className="text-white" size={18} />
             </a>
 
+            {/* Instagram */}
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/jubilee_stemracing2/"
               target="_blank"
               rel="noreferrer"
               className="w-10 h-10 bg-[#1a1d21] rounded-full flex items-center justify-center hover:bg-yellow-600 transition"

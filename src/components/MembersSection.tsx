@@ -1,6 +1,14 @@
 import React from "react";
 import { User } from "lucide-react";
 
+/**
+ * Note:
+ * - Change `IMAGE_CONTAINER_H` to increase/decrease image area height (h-64 / h-72 / h-80).
+ * - You can set `imgPos` per member (CSS object-position like "center 20%").
+ */
+
+const IMAGE_CONTAINER_H = "h-72"; // try "h-64" or "h-80" if you want different crop size
+
 const members = [
   {
     name: "Anas Alshweiki",
@@ -42,16 +50,16 @@ const members = [
     role: "Team Identity",
     description:
       "Works on branding, visuals, and building a strong identity for the STEM Racing team.",
-    img: "/src/assets/images/Teamimages/Malik.jpg", // ✅ FIXED PATH
+    img: "/src/assets/images/Teamimages/Malik.jpg",
+    // tweak this value to nudge Malik's image vertically (object-position)
+    // examples: "center 10%", "center 25%", "center 40%"
+    imgPos: "center 30%",
   },
 ];
 
 export default function MembersSection() {
   return (
-    <section
-      id="members"
-      className="relative py-20 bg-gradient-to-b from-gray-900 to-black"
-    >
+    <section id="members" className="relative py-20 bg-gradient-to-b from-gray-900 to-black">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,58 +67,55 @@ export default function MembersSection() {
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
             <div className="flex items-center space-x-2">
-              <div className="w-12 h-1 bg-yellow-400"></div>
-              <span className="text-yellow-400 font-semibold tracking-widest uppercase">
-                The Team
-              </span>
-              <div className="w-12 h-1 bg-yellow-400"></div>
+              <div className="w-12 h-1 bg-yellow-400" />
+              <span className="text-yellow-400 font-semibold tracking-widest uppercase">The Team</span>
+              <div className="w-12 h-1 bg-yellow-400" />
             </div>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Meet Our Engineers
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Meet Our Engineers</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            The brilliant minds behind STEM Racing, each bringing unique skills
-            and expertise to create excellence.
+            The brilliant minds behind STEM Racing, each bringing unique skills and expertise.
           </p>
         </div>
 
-        {/* GRID — SAME HEIGHTS (your preferred design) */}
+        {/* GRID - items-stretch makes all cards same height */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {members.map((m, i) => (
             <article
               key={i}
-              className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl overflow-hidden border border-yellow-400/20 hover:border-yellow-400 transition-all hover:scale-105 h-full flex flex-col"
+              className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl overflow-hidden border border-yellow-400/20 hover:border-yellow-400 transition-all hover:scale-105 flex flex-col h-full"
             >
-              {/* FIXED IMAGE CONTAINER — SAME HEIGHT */}
-              <div className="w-full h-64 overflow-hidden bg-black/40 flex items-center justify-center">
+              {/* IMAGE CONTAINER - fixed height so cards line up */}
+              <div className={`${IMAGE_CONTAINER_H} w-full overflow-hidden bg-black/40 flex items-start justify-center`}>
                 {m.img ? (
                   <img
                     src={m.img}
                     alt={m.name}
-                    className="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105 bg-black"
+                    // object-contain preserves entire image (no head cropping).
+                    // objectPosition lets us nudge particular images (like Malik).
+                    style={{ objectPosition: m.imgPos ?? "center top" }}
+                    className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
-                  <User size={64} className="text-yellow-400 opacity-70" />
+                  <div className="flex items-center justify-center w-full h-full">
+                    <User size={64} className="text-yellow-400 opacity-70" />
+                  </div>
                 )}
               </div>
 
-              {/* CONTENT */}
+              {/* CONTENT - flex-1 ensures content area is the same height across cards */}
               <div className="p-6 flex-1 flex flex-col">
                 <h3 className="text-xl font-bold text-white mb-1">{m.name}</h3>
 
                 <div className="flex items-center space-x-2 mb-3">
-                  <div className="w-8 h-0.5 bg-yellow-400"></div>
-                  <p className="text-yellow-500 text-sm font-semibold">
-                    {m.role}
-                  </p>
+                  <div className="w-8 h-0.5 bg-yellow-400" />
+                  <p className="text-yellow-500 text-sm font-semibold">{m.role}</p>
                 </div>
 
-                <p className="text-gray-400 text-sm leading-relaxed flex-1">
-                  {m.description}
-                </p>
+                <p className="text-gray-400 text-sm leading-relaxed flex-1">{m.description}</p>
 
+                {/* optional action area - keeps vertical spacing consistent */}
                 <div className="mt-4" />
               </div>
             </article>
