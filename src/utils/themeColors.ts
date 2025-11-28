@@ -1,0 +1,48 @@
+export type Theme = 'yellow' | 'red' | 'blue' | 'green';
+
+export const themeConfig = {
+  yellow: {
+    border: 'border-yellow-400',
+    hover: 'hover:text-yellow-400',
+    bg: 'from-yellow-500 to-yellow-600',
+    logo: 'from-yellow-500 to-yellow-700',
+    accent: 'bg-yellow-500',
+    accentLight: 'bg-yellow-500/20',
+    text: 'text-yellow-400',
+    textLight: 'text-yellow-300',
+    glowShadow: 'shadow-yellow-600/50',
+  },
+  red: {
+    border: 'border-red-600',
+    hover: 'hover:text-red-500',
+    bg: 'from-red-600 to-red-700',
+    logo: 'from-red-600 to-red-800',
+    accent: 'bg-red-600',
+    accentLight: 'bg-red-600/20',
+    text: 'text-red-500',
+    textLight: 'text-red-300',
+    glowShadow: 'shadow-red-600/50',
+  },
+  blue: {
+    border: 'border-blue-500',
+    hover: 'hover:text-blue-400',
+    bg: 'from-blue-500 to-blue-600',
+    logo: 'from-blue-500 to-blue-700',
+    accent: 'bg-blue-500',
+    accentLight: 'bg-blue-500/20',
+    text: 'text-blue-400',
+    textLight: 'text-blue-300',
+    glowShadow: 'shadow-blue-600/50',
+  },
+  green: {
+    border: 'border-green-500',
+    hover: 'hover:text-green-400',
+    bg: 'from-green-500 to-green-600',
+    logo: 'from-green-500 to-green-700',
+    accent: 'bg-green-500',
+    accentLight: 'bg-green-500/20',
+    text: 'text-green-400',
+    textLight: 'text-green-300',
+    glowShadow: 'shadow-green-600/50',
+  },
+};
